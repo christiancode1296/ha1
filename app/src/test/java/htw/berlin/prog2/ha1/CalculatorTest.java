@@ -28,10 +28,25 @@ class CalculatorTest {
     }
 
     @Test
+    @DisplayName("press EqualsKey twice after binary operation to repeat the calculation")
+    void testEqualsKey() {
+        Calculator calculator = new Calculator();
+        calculator.pressDigitKey(8);
+        calculator.pressBinaryOperationKey("+");
+        calculator.pressEqualsKey();
+        calculator.pressDigitKey(1);
+        calculator.pressEqualsKey();
+
+        String expected = "9";
+        String actual = calculator.readScreen();
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
     @DisplayName("should display result after adding two positive multi-digit numbers")
     void testPositiveAddition() {
         Calculator calc = new Calculator();
-
 
         calc.pressDigitKey(2);
         calc.pressDigitKey(0);
