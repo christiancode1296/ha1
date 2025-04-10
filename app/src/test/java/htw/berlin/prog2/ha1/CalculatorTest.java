@@ -8,10 +8,30 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 @DisplayName("Retro calculator")
 class CalculatorTest {
 
+
+    @Test
+    @DisplayName("should display result after substract two positive multi digit numbers")
+    void testPositiveSubtract() {
+        Calculator calculator = new Calculator();
+
+        calculator.pressDigitKey(2);
+        calculator.pressDigitKey(1);
+        calculator.pressBinaryOperationKey("-");
+        calculator.pressDigitKey(1);
+        calculator.pressDigitKey(1);
+        calculator.pressEqualsKey();
+
+        String expected = "10";
+        String actual = calculator.readScreen();
+
+        assertEquals(expected, actual);
+    }
+
     @Test
     @DisplayName("should display result after adding two positive multi-digit numbers")
     void testPositiveAddition() {
         Calculator calc = new Calculator();
+
 
         calc.pressDigitKey(2);
         calc.pressDigitKey(0);
